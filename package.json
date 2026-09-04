@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "jest": "^30.5.0"
+  },
+  "name": "MyApp",
+  "version": "1.0.0",
+  "main": "math.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
