@@ -1,0 +1,36 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
+
+on:
+
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Use Checkout
+      uses: actions/checkout@v4
+    - name: Use Node.js 
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+    - run: npm ci
+    - run: npm test
+    
+  build: 
+    needs: test # Job will be run after the test done
+    runs-on: ubuntu-latest # the runner
+    steps:
+    - name: Use Checkout # for installing the repo to runner
+      uses: actions/checkout@v4
+    - name: Use Node.js # for running by the node.js commands
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+    - run: npm ci
+    - run: npm run build 
+      
